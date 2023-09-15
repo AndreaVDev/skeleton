@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+    web:
+        build: .
+        command: python /skeleton/manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/skeleton
+        ports:
+            - "8000:8000"
+    db:
+        image: postgres:13
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust
+            - POSTGRES_DB=skdb
+            - POSTGRES_USER=prova
+            - POSTGRES_PASSWORD=provetta
+ 
+volumes:
+    postgres_data:

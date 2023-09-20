@@ -7,6 +7,11 @@ services:
             - .:/skeleton
         ports:
             - "8000:8000"
+        depends_on:
+            - db
+        environment:
+            - "DJANGO_SECRET_KEY=django-insecure-4)zebb0133@--+jig83l4#(d_u1!c3_cj=&mv4xq8!%)1iaqvds"
+            - "DJANGO_DEBUG=True"
     db:
         image: postgres:13
         volumes:
